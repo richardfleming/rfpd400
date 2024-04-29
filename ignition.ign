@@ -16,5 +16,13 @@
         "passwordHash": "$6$OCVO/DOUtXHmlW1F$VXt/75Oz9EPIZlvNzLSicWPYHNb1Bjd3uNNVDn5ZskcQtI02S3XsdzyI9P8g0D9NB9EW33RF/xrmWwTgrNIhB0"
       }
     ]
+  },
+  "systemd": {
+    "units": [
+      {
+        "name": "cockpit.socket",
+        "enabled": true
+      }
+    ]
   }
 }
