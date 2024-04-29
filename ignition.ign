@@ -1,0 +1,67 @@
+{
+  "ignition": { "version": "3.1.0" },
+  "storage": {
+    "disks": [
+      {
+        "device": "/dev/nvme0n1",
+        "wipeTable": true,
+        "partitions": [
+          {
+            "label": "ROOT",
+            "number": 1,
+            "size": "100%"
+          }
+        ]
+      }
+    ],
+    "filesystems": [
+      {
+        "device": "/dev/nvme0n1p1",
+        "format": "ext4",
+        "label": "ROOT",
+        "mount": {
+          "device": "/dev/nvme0n1p1",
+          "format": "ext4",
+          "create": {
+            "force": true,
+            "options": [
+              "-L", "ROOT"
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "passwd": {
+    "users": [
+      {
+        "name": "rfleming",
+        "sshAuthorizedKeys": [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIObFDjwi3yCPHotb6n6UxkIH0EoWRMklCRWEW3VYeM40"
+        ]
+      }
+    ]
+  },
+  "systemd": {
+    "units": [
+      {
+        "name": "docker.service",
+        "enabled": true
+      },
+      {
+        "name": "cockpit.socket",
+        "enabled": true
+      }
+    ]
+  },
+  "networkd": {
+    "units": [
+      {
+        "name": "00-eth0.network",
+        "contents": "[Match]\nName=eth0\n\n[Network]\nDHCP=yes"
+      }
+    ]
+  },
+  "hostname": "prodesk400",
+  "timezone": "America/Toronto"
+}
